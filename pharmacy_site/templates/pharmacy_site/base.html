@@ -15,7 +15,7 @@
     {% if title %}
     <title>{{ title }}</title>
     {% else %}
-    <title>shopping mall</title>
+    <title>MitraPharma</title>
     {% endif %}
 
     <style>
@@ -65,6 +65,11 @@
                         <a href="#about-us" class="nav-link">О НАС</a>
                     </li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'account' user.username %}" class="nav-link">
+                            <img style="width: 35px" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Личный кабинет"/>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{% url 'user-logout' %}?next=/" class="nav-link">ВЫЙТИ</a>
                     </li>

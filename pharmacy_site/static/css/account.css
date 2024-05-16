@@ -1,0 +1,31 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}
+
+.order_head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.vl {
+    border: 1px solid black;
+    opacity: 0.5;
+}
+
+.my_orders {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart_button {
+    width: 200px;
+    height: 50px;
+    border: none;
+    background: springgreen;
+    border-radius: 15px;
+}

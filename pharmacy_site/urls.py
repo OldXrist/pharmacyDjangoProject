@@ -9,8 +9,10 @@ urlpatterns = [
     path('presecriptionToCart/',views.presc_to_cart, name='prescription-to-cart'),
     path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart_pharmacy'),
     path('cart/', views.cart, name='cart_pharmacy'),
-    path('delete-product-cart-pharmacy/<int:product_id>',views.delete_product_from_cart,name='delete_product_cart_pharmacy'),
+    path('delete-product-cart-pharmacy/<int:product_id>', views.delete_product_from_cart,name='delete_product_cart_pharmacy'),
     path('confirm-order-pharmacy/', views.confirm_order, name='confirm_order_pharmacy'),
-    
+    path('medicine/<int:pk>/', views.medicine_item, name='medicine_item'),
+    path('account/<str:name>/', views.account, name='account'),
+
 ]
 

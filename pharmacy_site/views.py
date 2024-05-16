@@ -160,3 +160,20 @@ def confirm_order(request):
     else:
         # Handle GET request
         return redirect('cart_pharmacy')
+
+
+def medicine_item(request, pk=None):
+    if pk:
+        medicine_item = Medicine.objects.get(pk=pk)
+    else:
+        medicine_item = ""
+    return render(request, 'pharmacy_site/medicine_item.html', {"medicine_item": medicine_item})
+
+
+def account(request, name=None):
+    user = User.objects.get(username=name).id
+    order_data = Order.objects.filter(customer=user)
+    context = {
+        'orders': order_data,
+    }
+    return render(request, 'pharmacy_site/account.html', context)

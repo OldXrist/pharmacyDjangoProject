@@ -68,7 +68,7 @@
                     <img class="card-img-top" src="{{ med.image.url }}" alt="" style="height: 100%;">
                     <div class="card-body">
                         <h5 class="cart-title mb-3">
-                            {{ med.name }}
+                            <a style="text-decoration: none; color: black;" href="{% url 'medicine_item' pk=med.pk %}">{{ med.name }}</a>
                         </h5>
                         <p class="card-text lead">
                             {{ med.price }} ₽
