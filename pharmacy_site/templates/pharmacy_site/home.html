@@ -6,13 +6,13 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="5000">
-                <img src="{% get_media_prefix %}pharmacy_images/banner1.jpg" class="d-block w-100" alt="...">
+                <img style="max-height: 480px; border-radius: 15px;" src="{% get_media_prefix %}pharmacy_images/banner1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="5000">
-                <img src="{% get_media_prefix %}pharmacy_images/banner3.jpg" class="d-block w-100" alt="...">
+                <img style="max-height: 480px; border-radius: 15px;" src="{% get_media_prefix %}pharmacy_images/banner3.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="5000">
-                <img src="{% get_media_prefix %}pharmacy_images/banner2.jpg" class="d-block w-100" alt="...">
+                <img style="max-height: 480px; border-radius: 15px;" src="{% get_media_prefix %}pharmacy_images/banner2.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -27,16 +27,19 @@
 </div>
 
 <!-- description -->
-<div id="about-us" class="container mt-5">
+<div id="about-us" class="container mt-5"
+     style="background: linear-gradient(93deg, rgba(2,0,36,1) 0%, rgba(92,187,125,1) 0%, rgba(125,217,255,1) 100%);
+    padding: 50px;
+    border-radius: 15px;">
     <div class="row">
         <div class="col-md-6">
-            <img src="{% get_media_prefix %}pharmacy_images/description_image.jpg" class="img-fluid"
+            <img style="border-radius: 15px" src="{% get_media_prefix %}pharmacy_images/description_image.jpg" class="img-fluid"
                 alt="Image Description">
         </div>
         <div class="col-md-6 mt-4 mt-md-0">
-            <h5>MitraPharma</h5>
+            <h2>MitraPharma</h2>
 
-            <p>
+            <p style="font-size: 18px">
                 Ваше здоровье - наш главный приоритет. Мы являемся надежной аптекой, посвященной предоставлению вам
                 исключительного обслуживания, экспертных консультаций и доступных лекарств. Наш компетентный персонал
                 стремится помочь вам сохранять здоровье и радость. Посетите нас сегодня и убедитесь в этом сами.
@@ -45,7 +48,7 @@
     </div>
 </div>
 
-<section id="products" class="mt-5 p-5" style="background-color: blueviolet">
+<section id="products" class="mt-5 p-5">
     <div class="container">
         <h1 class="text-center pt-3 pb-4">КАТАЛОГ</h1>
 
