@@ -1,0 +1,137 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Главная</a></span> <span>Корзина</span></p>
+            <h1 class="mb-0 bread">Моя Корзина</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-cart">
+			<div class="container">
+				<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+	    				<table class="table" >
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th>Название</th>
+						        <th>Цена</th>
+						        <th>Кол-во</th>
+						        <th>Итого</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr class="text-center">
+                              {% if cart_items %}
+                                  {% for item in cart_items %}
+                                    <td class="product-remove"><a href="{% url 'remove_from_cart' item.id %}"><span class="ion-ios-close"></span></a></td>
+
+                                    <td class="image-prod"><img src="{{ item.product.photo.url }}" class="img"/></td>
+
+                                    <td class="product-name">
+                                        <h3>{{ item.product.name }}</h3>
+                                    </td>
+
+                                    <td class="price">₽{{ item.product.price }}</td>
+
+                                      <td class="quantity">{{ item.quantity }}</td>
+                                  </td>
+
+                                    <td class="total">₽{{ total_price }}</td>
+                                  </tr><!-- END TR-->
+                              {% endfor %}
+                            {% else %}
+                                  <p>Ваша корзина пуста.</p>
+                            {% endif %}
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+    				<div class="cart-total mb-3">
+    					<h3>Итого</h3>
+    					<p class="d-flex">
+    						<span>Товары</span>
+    						<span>₽{{ total_price }}</span>
+    					</p>
+    					<p class="d-flex">
+    						<span>Доставка</span>
+    						<span>₽0.00</span>
+    					</p>
+    					<hr>
+    					<p class="d-flex total-price">
+    						<span>Итого</span>
+    						<span>₽{{ total_price }}</span>
+    					</p>
+    				</div>
+    				<p><a href="{% url 'checkout' %}" class="btn btn-primary py-3 px-4">Заказать</a></p>
+    			</div>
+    		</div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+          	<h2 style="font-size: 22px;" class="mb-0">Подпишитесь на нашу рассылку!</h2>
+          	<span>Получайте уведомления о новых предложениях на почту</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control" placeholder="Введите email">
+                <input type="submit" value="Подписаться" class="submit px-3">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+  		$(document).ready(function(){
+
+  		var quantitiy=0;
+  		   $('.quantity-right-plus').click(function(e){
+
+  		        // Stop acting like a button
+  		        e.preventDefault();
+  		        // Get the field name
+  		        var quantity = parseInt($('#quantity').val());
+
+  		        // If is not undefined
+
+  		            $('#quantity').val(quantity + 1);
+
+
+  		            // Increment
+
+  		    });
+
+  		     $('.quantity-left-minus').click(function(e){
+  		        // Stop acting like a button
+  		        e.preventDefault();
+  		        // Get the field name
+  		        var quantity = parseInt($('#quantity').val());
+
+  		        // If is not undefined
+
+  		            // Increment
+  		            if(quantity>0){
+  		            $('#quantity').val(quantity - 1);
+  		            }
+  		    });
+
+  		});
+  	</script>
+{% endblock %}

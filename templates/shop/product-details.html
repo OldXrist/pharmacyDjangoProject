@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Главная</a></span> <span class="mr-2"><a href="#">Каталог</a></span> <span>{{ product.category }}</span></p>
+            <h1 class="mb-0 bread">{{ product.name }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-6 mb-5 ftco-animate">
+    				<a href="{{ product.photo.url }}" class="image-popup"><img src="{{ product.photo.url }}" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+    				<h3>{{ product.name }}</h3>
+    				<p class="price"><span>₽{{ product.price }}</span></p>
+    				<p>{{ product.details }}</p>
+          	<p><a href="{% url 'cart' %}" class="btn btn-black py-3 px-5">В Корзину</a></p>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+          	<h2 style="font-size: 22px;" class="mb-0">Подпишитесь на нашу рассылку!</h2>
+            <span>Получайте уведомления о новых предложениях на почту</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control" placeholder="Введите email">
+                <input type="submit" value="Подписаться" class="submit px-3">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      $(document).ready(function(){
+
+      var quantitiy=0;
+         $('.quantity-right-plus').click(function(e){
+
+              // Stop acting like a button
+              e.preventDefault();
+              // Get the field name
+              var quantity = parseInt($('#quantity').val());
+
+              // If is not undefined
+
+                  $('#quantity').val(quantity + 1);
+
+
+                  // Increment
+
+          });
+
+           $('.quantity-left-minus').click(function(e){
+              // Stop acting like a button
+              e.preventDefault();
+              // Get the field name
+              var quantity = parseInt($('#quantity').val());
+
+              // If is not undefined
+
+                  // Increment
+                  if(quantity>0){
+                  $('#quantity').val(quantity - 1);
+                  }
+          });
+
+      });
+    </script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Главная</a></span> <span>Избранное</span></p>
+            <h1 class="mb-0 bread">Избранное</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-cart">
+			<div class="container">
+				<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+                    {% if  wishlist_items %}
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>Товары</th>
+						        <th>&nbsp;</th>
+						        <th>Цена</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+                                {% for item in wishlist_items %}
+                                    <tr class="text-center">
+                                    <td class="product-remove"><a href="{% url 'remove_from_wishlist' item.id %}"><span class="ion-ios-close"></span></a></td>
+
+                                    <td class="image-prod"><img src="{{ item.product.photo.url }}" class="img"/></td>
+
+                                    <td class="product-name">
+                                    <h3>{{ item.product.name }}</h3>
+                                    </td>
+
+                                    <td class="price">₽{{ item.product.price }}</td>
+                                    </tr><!-- END TR-->
+                                {% endfor %}
+                            {% else %}
+                                <h2 class="text-center">Тут пока пусто...</h2>
+                            {% endif %}
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+			</div>
+		</section>
+{% endblock %}

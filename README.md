@@ -1,35 +1,92 @@
-# pharmacy-website-django
+# Django E-commerce Website.
 
-This website is created specifically for a pharmacy. On this platform, customers can register and purchase medicines. The website offers full CRUD functionality, including an 'add to cart' feature. Moreover, it provides a unique feature for users: they can upload a medical prescription to identify medicines and seamlessly add them to their cart. To develop this website, I utilized the Python-Django framework, Bootstrap for the front-end, and Django's ORM for database management. Additionally, I integrated Tesseract-OCR to implement the special prescription upload functionality.
- 
-***
-### Available Functionalities ###
-- CRUD functionality to manage Medicines
-- prescription Upload Function ( Users can upload their medical prescription images to the website, and the website will automatically identify the medicines )
-- add to cart functionality 
-- user management via admin interface
-- user login
-- user registration
-- admin login
+### Cloning the repository
 
-### Tech Stack ###
-- Python
-- Django Framework
-- Bootstrap
-- Java Script
-- CSS
-- HTML
+--> Clone the repository using the command below :
+```bash
+git clone https://github.com/sajib1066/django-ecommerce.git
 
+```
 
-### How to run locally ###
-1. you need to have python installed
-2. next you need install packages in requirments.txt and tesseract-ocr 
-3. next run this command to start the server.
-```ruby
+--> Move into the directory where we have the project files : 
+```bash
+cd django-ecommerce
+
+```
+
+--> Create a virtual environment :
+```bash
+# Create our virtual environment
+python -m venv venv
+
+```
+
+--> Activate the virtual environment : <br><br>
+windows
+```bash
+venv\scripts\activate
+
+```
+linux
+```bash
+source venv/bin/activate
+
+```
+
+--> Install the requirements :
+```bash
+pip install -r requirements.txt
+
+```
+
+--> Migrate Database
+```bash
+python manage.py migrate
+
+```
+
+--> Create Super User
+```bash
+python manage.py createsuperuser
+
+```
+
+#
+
+### Running the App
+
+--> To run the App, we use :
+```bash
 python manage.py runserver
+
 ```
-4. next open browser and go to
-```url
-localhost:8000
-```
-5. enjoy! 🥳🎉
+
+> ⚠ Then, the development server will be started at http://127.0.0.1:8000/
+
+#
+
+### App Preview :
+
+<table width="100%"> 
+<tr>
+<td width="50%">      
+&nbsp; 
+<br>
+<p align="center">
+  Landing page
+</p>
+<img src="https://user-images.githubusercontent.com/47305153/186664016-c0aece16-cfe3-475f-8ca6-c5cac62c9f88.PNG">
+</td> 
+<td width="50%">
+<br>
+<p align="center">
+  More view on landing page
+</p>
+<img src="https://user-images.githubusercontent.com/47305153/186664028-a661886b-88b5-474d-bcd8-1162258ab6d1.PNG">  
+</td>
+</table>
+
+
+## Documentation
+You can check up django documentation page for any further information.
+[Django Docs](https://docs.djangoproject.com/en/4.0/)
