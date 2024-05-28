@@ -14,6 +14,6 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'category', 'author', 'is_draft', 'date']
 
 
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(Tag, TagAdmin)
-admin.site.register(Post, PostAdmin)
+# admin.site.register(Category, CategoryAdmin)
+# admin.site.register(Tag, TagAdmin)
+# admin.site.register(Post, PostAdmin)
