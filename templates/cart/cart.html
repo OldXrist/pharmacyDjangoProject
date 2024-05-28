@@ -14,8 +14,9 @@
     </div>
 
     <section class="ftco-section ftco-cart">
-			<div class="container">
-				<div class="row">
+			<form method="post" action="{% url 'order_create' %}" class="container">
+				{% csrf_token %}
+                <div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="cart-list">
 	    				<table class="table" >
@@ -57,7 +58,14 @@
 					  </div>
     			</div>
     		</div>
-    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+            <div class="col-md-6 d-flex align-items-center">
+            <div class="subscribe-form">
+                <div class="form-group d-flex">
+                    <input name="address" type="text" class="form-control" placeholder="Введите адрес доставки" required/>
+                </div>
+            </div>
+          </div>
+    			<div class="col-lg-4 mt-3 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
     					<h3>Итого</h3>
     					<p class="d-flex">
@@ -74,10 +82,9 @@
     						<span>₽{{ total_price }}</span>
     					</p>
     				</div>
-    				<p><a href="{% url 'checkout' %}" class="btn btn-primary py-3 px-4">Заказать</a></p>
+    				<p><button type="submit" class="btn btn-primary py-3 px-4">Заказать</button></p>
     			</div>
-    		</div>
-			</div>
+    		</form>
 		</section>
 
 		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
