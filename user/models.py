@@ -8,6 +8,7 @@ class UserDetail(models.Model):
     gender = models.CharField(max_length=20)
     about = models.TextField()
     city = models.CharField(max_length=30)
+    phone = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
