@@ -31,6 +31,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('account/', include('account.urls')),
     path('order/', include('order.urls')),
+    path('user/', include('user.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

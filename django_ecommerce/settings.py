@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'author',
     'account',
     'order',
+    'user',
     # 'signup'
 ]
 
