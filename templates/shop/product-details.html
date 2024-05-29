@@ -23,7 +23,11 @@
     				<h3>{{ product.name }}</h3>
     				<p class="price"><span>₽{{ product.price }}</span></p>
     				<p>{{ product.details }}</p>
-          	<p><a href="{% url 'cart' %}" class="btn btn-black py-3 px-5">В Корзину</a></p>
+                    {% if user.is_authenticated %}
+          	        <p><a href="{% url 'cart' %}" class="btn btn-black py-3 px-5">В Корзину</a></p>
+                    {% else %}
+                        <p class="text-danger">Чтобы добавить товар в корзину войдите или зарегистрируйтесь!</p>
+                    {% endif %}
     			</div>
     		</div>
     	</div>
