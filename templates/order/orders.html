@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Главная</a></span> <span>Заказы</span></p>
+            <h1 class="mb-0 bread">Заказы</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-cart">
+			<div class="container">
+				<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+                    {% if orders %}
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th>#</th>
+						        <th>Дата</th>
+						        <th>Итог</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+                                {% for order in orders %}
+                                    <tr class="text-center">
+                                    <td class="product-name">
+                                        <h3><a href="{% url 'order_detail' order.id %}">Заказ {{ order.id }}</a></h3>
+                                    </td>
+                                    <td class="price">{{ order.order_date.date }}</td>
+                                    <td class="price">₽{{ order.total }}</td>
+                                    </tr><!-- END TR-->
+                                {% endfor %}
+                            {% else %}
+                                <h2 class="text-center">Тут пока пусто...</h2>
+                            {% endif %}
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+			</div>
+		</section>
+{% endblock %}

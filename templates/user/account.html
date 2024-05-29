@@ -1,0 +1,152 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Главная</a></span> <span>Личный кабинет</span></p>
+            <h1 class="mb-0 bread">{{ user.username }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-7 ftco-animate">
+						<form action="#" class="billing-form">
+							<h2 class="mb-4">Личные данные</h2>
+	          	<div class="row align-items-end">
+	          		<div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="firstname">Имя</label>
+	                  <input type="text" class="form-control" placeholder="" value="{{ details.user.first_name }}">
+	                </div>
+	              </div>
+	              <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="lastname">Фамилия</label>
+	                  <input type="text" class="form-control" placeholder="" value="{{ details.user.last_name }}">
+	                </div>
+                </div>
+                <div class="w-100"></div>
+		            <div class="col-md-12">
+		            	<div class="form-group">
+		            		<label for="country">Город</label>
+		            		<input type="text" class="form-control" placeholder="" value="{{ details.city }}">
+		            	</div>
+		            </div>
+		            <div class="w-100"></div>
+		            <div class="col-md-6">
+		            	<div class="form-group">
+	                	<label for="streetaddress">Адрес</label>
+	                  <input type="text" class="form-control" placeholder="" value="{{ details.address }}">
+	                </div>
+		            </div>
+		            <div class="w-100"></div>
+		            <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="phone">Номер телефона</label>
+	                  <input type="text" class="form-control" placeholder="" value="{{ details.phone }}">
+	                </div>
+	              </div>
+	              <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="emailaddress">Email</label>
+	                  <input type="text" class="form-control" placeholder="" value="{{ details.user.email }}">
+	                </div>
+                </div>
+                <div class="w-100"></div>
+	            </div>
+                <button type="submit" class="btn btn-primary py-3 px-4">Обновить информацию</button>
+	          </form><!-- END -->
+					</div>
+            <div class="col-xl-5">
+	          <div class="row mt-5 pt-3">
+	          	<div class="col-md-12 d-flex mb-5">
+	          		<div class="cart-detail cart-total p-3 p-md-4">
+                        <h2 class="billing-heading mb-4"><a href="{% url 'cart' %}">Корзина</a></h2>
+                        {% if cart %}
+                            {% for item in cart %}
+                            <p class="d-flex">
+                                <span><a href="{% url 'product-details' item.product.id %}">{{ item.product.name }}</a></span>
+                                <span>₽{{ item.product.price }} x{{ item.quantity }}</span>
+                            </p>
+                            {% endfor %}
+                        {% else %}
+                            <p style="text-align: center;">Ваша корзина пуста</p>
+                        {% endif %}
+                            <hr>
+                            <p class="d-flex total-price">
+                                <span>Итого</span>
+                                <span>₽{{ total_price }}</span>
+                            </p>
+                    </div>
+	          	</div>
+              <div class="col-md-12 d-flex mb-5">
+	          		<div class="cart-detail cart-total p-3 p-md-4">
+                        <h2 class="billing-heading mb-4"><a href="{% url 'wishlist' %}">Избранное</a></h2>
+                        {% if wishlist %}
+                            {% for item in wishlist %}
+                            <p class="d-flex">
+                                <span><a href="{% url 'product-details' item.product.id %}">{{ item.product.name }}</a></span>
+                                <span>₽{{ item.product.price }}</span>
+                            </p>
+                            {% endfor %}
+                        {% else %}
+                            <p style="text-align: center;">Тут пока пусто</p>
+                        {% endif %}
+                            <hr>
+                            <p class="d-flex total-price">
+                                <span>Итого</span>
+                                <span>₽{{ total_price }}</span>
+                            </p>
+                    </div>
+	          	</div>
+	          	<div class="col-md-12 d-flex mb-5">
+	          		<div class="cart-detail cart-total p-3 p-md-4">
+                        <h2 class="billing-heading mb-4"><a href="{% url 'order_list' %}">Заказы</a></h2>
+                        {% if orders %}
+                            {% for order in orders %}
+                            <p class="d-flex">
+                                <span>Заказ {{ order.id }}</span>
+                                <span>₽{{ order.total }}</span>
+                            </p>
+                            {% endfor %}
+                        {% else %}
+                            <p style="text-align: center;">Ваша корзина пуста</p>
+                        {% endif %}
+                            <hr>
+                            <a href="{% url 'order_list' %}" class="btn btn-primary py-3 px-4">К Заказам</a>
+                    </div>
+	          	</div>
+	          </div>
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+          	<h2 style="font-size: 22px;" class="mb-0">Подпишитесь на нашу рассылку!</h2>
+            <span>Получайте уведомления о новых предложениях на почту</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control" placeholder="Введите email">
+                <input type="submit" value="Подписаться" class="submit px-3">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

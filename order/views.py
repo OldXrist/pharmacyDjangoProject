@@ -26,7 +26,12 @@ def order_create(request):
 
 
 def order_detail(request, order_id):
-    cart_items = Cart.objects.filter(user=request.user)
-    order = Order.objects.filter(user=request.user)[0]
-    total_price = sum(item.product.price * item.quantity for item in cart_items)
-    return render(request, 'order.html', {'cart_items': cart_items, 'total_price': total_price, 'order': order})
+    order = Order.objects.get(user=request.user, id=order_id)
+    detail = OrderDetail.objects.filter(order=order)
+    total_price = sum(item.product.price * item.quantity for item in detail)
+    return render(request, 'order/detail.html', {'detail': detail, 'order': order, 'total_price': total_price})
+
+
+def order_list(request):
+    orders = Order.objects.filter(user=request.user)
+    return render(request, 'order/orders.html', {"orders": orders})

@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import  MyUserCreationForm
+from .forms import MyUserCreationForm
+from user.models import UserDetail
+
 
 def signup(request):
     if request.user.is_authenticated:
@@ -10,7 +12,9 @@ def signup(request):
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user_detail, created = UserDetail.objects.get_or_create(user=request.user)
             user.save()
+            user_detail.save()
             username = form.cleaned_data.get('username') 
             login(request, user)
             return redirect('/')
