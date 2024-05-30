@@ -9,8 +9,10 @@
         <div class="row block-9">
           <div class="col-md-6 order-md-last d-flex">
             <form class="bg-white p-5 contact-form" action="{% url 'signup' %}" method="post">
-              {% csrf_token %} {% for field in form %}
-              <div class="form-group">
+              {% csrf_token %}
+                {% for field in form %}
+              <div class="form-group" style="display: flex; justify-content: space-between;">
+                {{ field.label }}
                 {{field}}
               </div>
               {% endfor %}

@@ -12,10 +12,12 @@
               {% csrf_token %}
               {% block user_form %}
               
-              <div class="form-group">
+              <div class="form-group" style="display: flex; justify-content: space-between;">
+                {{ form.username.label }}
                 {{ form.username }}
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: flex; justify-content: space-between;">
+                {{ form.password.label }}
                 {{ form.password }}
               </div>
               <div class="form-group">
