@@ -12,11 +12,11 @@ def signup(request):
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user_detail, created = UserDetail.objects.get_or_create(user=request.user)
             user.save()
-            user_detail.save()
-            username = form.cleaned_data.get('username') 
+            username = form.cleaned_data.get('username')
             login(request, user)
+            user_detail, created = UserDetail.objects.get_or_create(user=request.user)
+            user_detail.save()
             return redirect('/')
         else:
             return render(request, 'account/signup.html', {'form': form})
