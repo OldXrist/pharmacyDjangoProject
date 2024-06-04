@@ -9,6 +9,10 @@ class Contact(models.Model):
     message = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
     def __str__(self):
         return self.name
 
@@ -16,6 +20,10 @@ class Contact(models.Model):
 class Subscriber(models.Model):
     email = models.EmailField(max_length=255, unique=True)
     date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Подписчик'
+        verbose_name_plural = 'Подписчики'
 
     def __str__(self):
         return str(self.email)

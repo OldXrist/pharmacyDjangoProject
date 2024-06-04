@@ -42,16 +42,15 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
-
     'blog',
-    'contact',
+    'contact.apps.ContactConfig',
     'about',
-    'shop',
-    'cart',
-    'author',
+    'shop.apps.ShopConfig',
+    'cart.apps.CartConfig',
+    'author.apps.AuthorConfig',
     'account',
-    'order',
-    'user',
+    'order.apps.OrderConfig',
+    'user.apps.UserConfig',
     # 'signup'
 ]
 

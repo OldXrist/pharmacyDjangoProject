@@ -10,5 +10,9 @@ class UserDetail(models.Model):
     city = models.CharField(max_length=30, blank=True)
     phone = models.CharField(max_length=12, blank=True)
 
+    class Meta:
+        verbose_name = 'Инф. о пользователе'
+        verbose_name_plural = 'Инф. о пользователе'
+
     def __str__(self):
         return self.user.username
