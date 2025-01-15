@@ -31,5 +31,3 @@ python manage.py runserver
 4. next open browser and go to
 ```url
 localhost:8000
-```
-5. enjoy! 🥳🎉
